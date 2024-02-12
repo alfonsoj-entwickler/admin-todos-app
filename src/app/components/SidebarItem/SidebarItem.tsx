@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 
 interface Props {
   path: string;
-  icon: JSX.Element;
+  icon: React.ReactNode;
   title: string;
 }
 
@@ -15,14 +15,14 @@ const SidebarItem = ({ path, icon, title }: Props) => {
     <li>
       <Link
         href={path}
-        className={`relative px-4 py-3 flex items-center space-x-4 rounded-xl text-white bg-gradient-to-r from-sky-600 to-cyan-400 ${
+        className={`relative px-4 py-3 flex items-center space-x-4 rounded-xl text-gray-600 group transition-all hover:text-white hover:bg-gradient-to-r hover:from-sky-600 hover:to-cyan-400 ${
           currentPath === path
-            ? "bg-gradient-to-r from-sky-600 to-cyan-400"
+            ? "text-white bg-gradient-to-r from-sky-600 to-cyan-400"
             : ""
         }`}
       >
         {icon}
-        <span className="-mr-1 font-medium">{title}</span>
+        <span className="group-hover:text-white">{title}</span>
       </Link>
     </li>
   );

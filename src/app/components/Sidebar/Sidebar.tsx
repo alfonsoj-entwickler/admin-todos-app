@@ -1,18 +1,24 @@
 import Link from "next/link";
 import Image from "next/image";
-import { CiBookmarkCheck, CiLogout } from "react-icons/ci";
+import { CiLogout } from "react-icons/ci";
+import { IoCalendar, IoCheckboxOutline, IoListOutline } from "react-icons/io5";
 import SidebarItem from "../SidebarItem/SidebarItem";
 
 const menuItems = [
   {
-    path: "#",
-    icon: <CiBookmarkCheck size={30} />,
+    path: "/dashboard",
+    icon: <IoCalendar size={30} />,
     title: "Dashboard",
   },
   {
-    path: "#",
-    icon: <CiBookmarkCheck size={30} />,
-    title: "Categories",
+    path: "/dashboar/rest-todos",
+    icon: <IoCheckboxOutline size={30} />,
+    title: "Rest TODOS",
+  },
+  {
+    path: "/dashboar/server-todos",
+    icon: <IoListOutline size={30} />,
+    title: "Server Actions",
   },
 ];
 
@@ -26,6 +32,8 @@ const Sidebar = () => {
               src="https://tailus.io/sources/blocks/stats-cards/preview/images/logo.svg"
               className="w-32"
               alt="tailus logo"
+              width={150}
+              height={150}
             />
           </Link>
         </div>
@@ -34,6 +42,8 @@ const Sidebar = () => {
             src="https://tailus.io/sources/blocks/stats-cards/preview/images/second_user.webp"
             alt=""
             className="w-10 h-10 m-auto rounded-full object-cover lg:w-28 lg:h-28"
+            width={150}
+            height={150}
           />
           <h5 className="hidden mt-4 text-xl font-semibold text-gray-600 lg:block">
             Cynthia J. Watts
