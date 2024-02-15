@@ -11,12 +11,12 @@ const menuItems = [
     title: "Dashboard",
   },
   {
-    path: "/dashboar/rest-todos",
+    path: "/dashboard/rest-todos",
     icon: <IoCheckboxOutline size={30} />,
     title: "Rest TODOS",
   },
   {
-    path: "/dashboar/server-todos",
+    path: "/dashboard/server-todos",
     icon: <IoListOutline size={30} />,
     title: "Server Actions",
   },
