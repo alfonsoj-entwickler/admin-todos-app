@@ -4,5 +4,18 @@ interface Props {
   todo: Todo;
 }
 export const TodoItem = ({ todo }: Props) => {
-  return <div>TodoItem</div>;
+  return (
+    <>
+      <div>
+        {todo.id}
+      </div>
+      <div>
+        {todo.description}
+      </div>
+      <div>
+        {todo.updateAt}
+      </div>
+    </>
+  )
+  ;
 };
