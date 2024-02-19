@@ -5,15 +5,15 @@ interface Props {
 }
 export const TodoItem = ({ todo }: Props) => {
   return (
-    <>
-      <div>
-        {todo.id}
+    <div className="flex flex-col gap-4 p-6 rounded-xl bg-green-600 text-white">
+      <div className="text-base font-light">
+        <span>{todo.id}</span>
       </div>
-      <div>
-        {todo.description}
+      <div className="text-xl font-semibold">
+        <span>{todo.description}</span>
       </div>
-      <div>
-        {todo.updateAt}
+      <div className="text-base font-light">
+        <span>{todo.updateAt}</span>
       </div>
     </>
   )
