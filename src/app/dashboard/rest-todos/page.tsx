@@ -1,16 +1,22 @@
-"use client";
 
 import prisma from "@/lib/prisma";
 import { TodosGrid } from "@/todos";
 
+
+export const metadata = {
+  title: 'Listado de Todos',
+  description: 'SEO Title',
+ };
+ 
+
 export default async function RestTodos() {
   const todos = await prisma.todo.findMany({ orderBy: { description: "asc" } });
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1 className="text-6xl font-bold underline">Dashboard</h1>
-      <TodosGrid 
-        todos={todos}
-      />
-    </main>
+    <div>
+      <div className="w-full px-3 mx-5 mb-5"> 
+      </div>
+      
+      <TodosGrid todos={ todos } />
+    </div>
   );
 }
