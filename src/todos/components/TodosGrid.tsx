@@ -6,7 +6,6 @@ interface Props {
 }
 
 export const TodosGrid = ({ todos = [] }: Props) => {
-  console.log(todos);
   return (
     <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
       {todos.map((todo) => (
