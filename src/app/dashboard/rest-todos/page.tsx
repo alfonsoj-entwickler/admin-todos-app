@@ -1,6 +1,6 @@
 
 import prisma from "@/lib/prisma";
-import { NewTodo, TodosGrid } from "@/todos";
+import { TodosGrid } from "@/todos";
 
 
 export const metadata = {
@@ -10,13 +10,10 @@ export const metadata = {
  
 
 export default async function RestTodos() {
-  
   const todos = await prisma.todo.findMany({ orderBy: { description: "asc" } });
-
   return (
     <div>
-      <div className="w-full px-6 mx-5 mb-5">
-        <NewTodo />
+      <div className="w-full px-3 mx-5 mb-5"> 
       </div>
       
       <TodosGrid todos={ todos } />
