@@ -1,32 +1,27 @@
 import prisma from "@/lib/prisma";
 import { NextResponse } from "next/server";
+import bcrypt from "bcryptjs";
 
 export async function GET(request: Request) {
   await prisma.todo.deleteMany(); // delete * from table
+  await prisma.user.deleteMany();
 
-  await prisma.todo.createMany({
-    data: [
-      {
-        description: "Piedra del alma",
-        complete: true,
+  const user = await prisma.user.create({
+    data: {
+      email: "test@colnet.com",
+      password: bcrypt.hashSync("1234567"),
+      roles: ["admin", "client", "root"],
+      todos: {
+        create: [
+          { description: "Home", complete: true },
+          { description: "Car", complete: false },
+          { description: "Cake", complete: false },
+          { description: "Surf", complete: false },
+        ],
       },
-      {
-        description: "Piedra del corazon",
-      },
-      {
-        description: "Piedra del leon",
-      },
-      {
-        description: "Piedra del cochinillo",
-      },
-      {
-        description: "Piedra del cerdo",
-      },
-      {
-        description: "Piedra del lobo",
-      },
-    ],
+    },
   });
+
   return NextResponse.json({
     messsage: "Seed Executed",
   });
