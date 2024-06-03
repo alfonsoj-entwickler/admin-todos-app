@@ -11,6 +11,10 @@ docker compose up -d
 3. Replace the environment variables
 4. Execute SEED to [crear la base de datos local](localhost:3000/api/seed)
 
+## Note: Default User
+__user:__ test@colnet.com
+__password:__ 1234567
+
 
 # Prisma commnads
 ```
