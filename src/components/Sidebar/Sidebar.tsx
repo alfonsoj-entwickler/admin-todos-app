@@ -1,8 +1,16 @@
 import Link from "next/link";
 import Image from "next/image";
 import { CiLogout } from "react-icons/ci";
-import { IoCalendar, IoCheckboxOutline, IoCodeSlash, IoListOutline, IoPaperPlane } from "react-icons/io5";
+import {
+  IoCalendar,
+  IoCheckboxOutline,
+  IoCodeSlash,
+  IoListOutline,
+  IoPaperPlane,
+  IoPerson,
+} from "react-icons/io5";
 import SidebarItem from "../SidebarItem/SidebarItem";
+import { LogoutButton } from "./LogoutButton";
 
 const menuItems = [
   {
@@ -30,9 +38,20 @@ const menuItems = [
     icon: <IoPaperPlane size={30} />,
     title: "Products",
   },
+  {
+    path: "/dashboard/profil",
+    icon: <IoPerson size={30} />,
+    title: "Profile",
+  },
 ];
 
-const Sidebar = () => {
+interface Props {
+  name: string | null | undefined;
+  image: string | null | undefined;
+  roles: string[] | null | undefined;
+}
+
+const Sidebar = ({ name, image, roles }: Props) => {
   return (
     <aside className="ml-[-100%] fixed z-10 top-0 pb-3 px-6 w-full flex flex-col justify-between h-screen border-r bg-white transition duration-300 md:w-4/12 lg:ml-0 lg:w-[25%] xl:w-[20%] 2xl:w-[15%]">
       <div>
@@ -48,17 +67,27 @@ const Sidebar = () => {
           </Link>
         </div>
         <div className="mt-8 text-center">
-          <Image
-            src="https://tailus.io/sources/blocks/stats-cards/preview/images/second_user.webp"
-            alt=""
-            className="w-10 h-10 m-auto rounded-full object-cover lg:w-28 lg:h-28"
-            width={150}
-            height={150}
-          />
+          {image ? (
+            <Image
+              src={image}
+              alt=""
+              className="w-10 h-10 m-auto rounded-full object-cover lg:w-28 lg:h-28"
+              width={150}
+              height={150}
+            />
+          ) : (
+            <Image
+              src="https://tailus.io/sources/blocks/stats-cards/preview/images/second_user.webp"
+              alt=""
+              className="w-10 h-10 m-auto rounded-full object-cover lg:w-28 lg:h-28"
+              width={150}
+              height={150}
+            />
+          )}
           <h5 className="hidden mt-4 text-xl font-semibold text-gray-600 lg:block">
-            Cynthia J. Watts
+            {name}
           </h5>
-          <span className="hidden text-gray-400 lg:block">Admin</span>
+          <span className="hidden text-gray-400 lg:block capitalize">{roles?.join(',')}</span>
         </div>
 
         <ul className="space-y-2 tracking-wide mt-8">
@@ -69,10 +98,7 @@ const Sidebar = () => {
       </div>
 
       <div className="px-6 -mx-6 pt-4 flex justify-between items-center border-t">
-        <button className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group">
-          <CiLogout />
-          <span className="group-hover:text-gray-700">Logout</span>
-        </button>
+        <LogoutButton />
       </div>
     </aside>
   );
